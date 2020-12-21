@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "502465211000",
+    "project_id": "owlzfood-72276",
+    "storage_bucket": "owlzfood-72276.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502465211000:android:f03944210e076220ff9b8d",
+        "android_client_info": {
+          "package_name": "com.example.owlzfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "502465211000-ngm8peicncutkrn1s9t83o7bolp8o917.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkd0t70gQARcBarKiKtukB8llXhmK42bg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "502465211000-ngm8peicncutkrn1s9t83o7bolp8o917.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
