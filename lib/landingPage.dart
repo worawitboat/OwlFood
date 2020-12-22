@@ -29,6 +29,21 @@ class _LandingPageState extends State<LandingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+             Padding(
+                padding: new EdgeInsets.only(bottom: 20),
+                child: Text("Owl Food",style: TextStyle(
+                                fontFamily: "Prompt",
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold))),
+
+             Padding(
+                padding: new EdgeInsets.only(bottom: 150.0),
+                child: Image(
+                  image: AssetImage('assets/images/owlz-logo.png'),
+                  width: 250,
+                  height: 200,
+                )),
+                
             SignInButton(
               Buttons.Facebook,
               text: "Login with facebook",

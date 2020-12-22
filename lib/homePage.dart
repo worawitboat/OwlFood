@@ -79,9 +79,24 @@ class _HomePageState extends State<HomePage> {
                     )),
               ],
             ),
-            Padding(
-                padding: new EdgeInsets.only(top: 50.0),
-                child: _widgetOptions.elementAt(_selectedIndex)),
+            _selectedIndex == 0
+                ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    new Padding(
+                        padding: new EdgeInsets.only(top: 50.0, left:50),
+                        child: Text("Menu",
+                            style:
+                                TextStyle(fontFamily: "Prompt", fontSize: 10))),
+                    new Padding(
+                        padding: new EdgeInsets.only(top: 20.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [menu(context), menu(context)],
+                        ))
+                  ])
+                : new Padding(
+                    padding: new EdgeInsets.only(top: 50.0), child: Text("2"))
           ],
         ),
       ),
@@ -100,6 +115,55 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ),
+    );
+  }
+
+  Widget menu(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Card(
+          child: InkWell(
+            splashColor: Colors.blue.withAlpha(30),
+            onTap: () {
+              print('Card tapped.');
+            },
+            child: Container(
+              width: 200,
+              height: 250,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                      padding: new EdgeInsets.all(0),
+                      child: Container(
+                          width: 200.0,
+                          height: 150.0,
+                          decoration: new BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 3,
+                                  blurRadius: 7,
+                                  offset: Offset(
+                                      0, 3), // changes position of shadow
+                                ),
+                              ],
+                              image: new DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: new AssetImage(
+                                      "assets/images/menu/burger.jpg"))))),
+                  Padding(
+                      padding: new EdgeInsets.only(top: 10),
+                      child: Text("BURGER!",
+                          style:
+                              TextStyle(fontFamily: "Prompt", fontSize: 20))),
+                ],
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }

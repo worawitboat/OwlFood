@@ -55,11 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: new EdgeInsets.only(bottom: 150.0),
                 child: Image(
                   image: AssetImage('assets/images/owlz-logo.png'),
-                  width: 150,
-                  height: 100,
+                  width: 250,
+                  height: 200,
                 )),
             LoadingBouncingGrid.square(
               size: 30.0,
+              backgroundColor: Colors.blue,
             )
           ],
         ),
