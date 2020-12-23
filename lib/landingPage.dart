@@ -20,6 +20,7 @@ class _LandingPageState extends State<LandingPage> {
 
   void initState() {
     super.initState();
+
     // checkAuth(context);
   }
 
@@ -29,26 +30,29 @@ class _LandingPageState extends State<LandingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             Padding(
+            Padding(
                 padding: new EdgeInsets.only(bottom: 20),
-                child: Text("Owl Food",style: TextStyle(
-                                fontFamily: "Prompt",
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold))),
-
-             Padding(
+                child: Text("Owl Food",
+                    style: TextStyle(
+                        fontFamily: "Prompt",
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold))),
+            Padding(
                 padding: new EdgeInsets.only(bottom: 150.0),
                 child: Image(
                   image: AssetImage('assets/images/owlz-logo.png'),
                   width: 250,
                   height: 200,
                 )),
-                
             SignInButton(
               Buttons.Facebook,
               text: "Login with facebook",
               // mini: true,
               onPressed: () {
+                // Navigator.pushReplacement(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => HomePage(profile: {"picture":{"data":{"url":'assets/images/owlz-logo.png'}},"name":"worawit panomroengchai"})));
                 loginWithFacebook(context);
               },
             )
@@ -57,21 +61,6 @@ class _LandingPageState extends State<LandingPage> {
       ),
     );
   }
-
-  // Widget buildButtonFacebook(BuildContext context) {
-  //   return InkWell(
-  //       child: Container(
-  //           constraints: BoxConstraints.expand(height: 50),
-  //           child: Text("Login with Facebook ",
-  //               textAlign: TextAlign.center,
-  //               style: TextStyle(fontSize: 18, color: Colors.white)),
-  //           decoration: BoxDecoration(
-  //               borderRadius: BorderRadius.circular(16),
-  //               color: Colors.blue[400]),
-  //           margin: EdgeInsets.only(top: 12),
-  //           padding: EdgeInsets.all(12)),
-  //       onTap: () => loginWithFacebook(context));
-  // }
 
   Future loginWithFacebook(BuildContext context) async {
     FacebookLogin facebookLogin = FacebookLogin();
@@ -84,7 +73,15 @@ class _LandingPageState extends State<LandingPage> {
 
         final graphResponse = await http.get(
             'https://graph.facebook.com/v2.12/me?fields=name,picture.width(100).height(100),email&access_token=${token}');
+
         final profile = JsonDecoder().convert(graphResponse.body);
+        print(profile);
+
+        final graphResponse2 = await http.get(
+            'https://graph.facebook.com/v2.12/me/friends?fields=id,name,picture,limit=5&access_token=${token}');
+        final friends = JsonDecoder().convert(graphResponse2.body);
+        print(friends);
+
         await _auth.signInWithCredential(
             FacebookAuthProvider.getCredential(accessToken: token));
         setState(() => _isLoggedIn = true);
@@ -110,8 +107,8 @@ class _LandingPageState extends State<LandingPage> {
     FirebaseUser user = await _auth.currentUser();
     if (user != null) {
       print("Already singed-in with");
-      // Navigator.pushReplacement(
-      //     context, MaterialPageRoute(builder: (context) => MyHomePage(user)));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => HomePage(profile: profile)));
     }
   }
 }

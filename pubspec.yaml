@@ -56,6 +56,11 @@ flutter:
     - assets/images/owlz-logo.png
     - assets/images/login-logo.png
     - assets/images/menu/burger.jpg
+    - assets/images/menu/steak.jpg
+    - assets/images/menu/burger-fish.jpg
+    - assets/images/menu/friend-fried.jpg
+    - assets/images/menu/hotdog.jpg
+    - assets/images/menu/coke.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
