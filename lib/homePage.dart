@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                                           context,
                                           80,
                                           "assets/images/menu/burger-fish.jpg",
-                                          "Burger fish",
+                                          "Fish burger ",
                                           70),
                                       menu(
                                           context,
